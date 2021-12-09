@@ -1,7 +1,5 @@
 import System.Environment
 
-
-
 inc :: Maybe(Int) -> Int -> [Int] -> Int
 inc Nothing s (x:xs) = inc (Just x) s xs
 inc _ s []           = s
