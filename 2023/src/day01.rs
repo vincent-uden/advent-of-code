@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn part1(input: &str) {
+pub fn part1(input: &str) -> i32 {
     let mut sum: i32 = 0;
     for line in input.lines() {
         let mut number = String::new();
@@ -19,22 +19,22 @@ pub fn part1(input: &str) {
         sum += number.parse::<i32>().unwrap();
     }
 
-    println!("{}", sum);
+    sum
 }
 
-pub fn part2(input: &str) {
+pub fn part2(input: &str) -> i32 {
     let mut sum: i32 = 0;
     let mut digits: HashMap<&str, char> = HashMap::new();
-    digits.insert("zero",  '0');
-    digits.insert("one",   '1');
-    digits.insert("two",   '2');
+    digits.insert("zero", '0');
+    digits.insert("one", '1');
+    digits.insert("two", '2');
     digits.insert("three", '3');
-    digits.insert("four",  '4');
-    digits.insert("five",  '5');
-    digits.insert("six",   '6');
+    digits.insert("four", '4');
+    digits.insert("five", '5');
+    digits.insert("six", '6');
     digits.insert("seven", '7');
     digits.insert("eight", '8');
-    digits.insert("nine",  '9');
+    digits.insert("nine", '9');
     digits.insert("0", '0');
     digits.insert("1", '1');
     digits.insert("2", '2');
@@ -50,7 +50,7 @@ pub fn part2(input: &str) {
         let mut forward = line.chars().collect::<String>();
         let mut reverse = line.chars().collect::<String>();
         let mut number = String::new();
-        '_outer: while forward.len() > 0 {
+        '_outer: while !forward.is_empty() {
             for key in digits.keys() {
                 if forward.starts_with(key) {
                     number.push(digits[key]);
@@ -59,7 +59,7 @@ pub fn part2(input: &str) {
             }
             forward = forward[1..].to_string();
         }
-        '_outer: while reverse.len() > 0 {
+        '_outer: while !reverse.is_empty() {
             for key in digits.keys() {
                 if reverse.ends_with(key) {
                     number.push(digits[key]);
@@ -72,5 +72,5 @@ pub fn part2(input: &str) {
         sum += number.parse::<i32>().unwrap();
     }
 
-    println!("{}", sum);
+    sum
 }
