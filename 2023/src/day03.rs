@@ -86,7 +86,12 @@ pub fn part1(input: &str) -> i32 {
     summed_part_nr
 }
 
-fn numbers_adjacent<'a>(pos_x: i32, pos_y: i32, schematic: &Vec<Vec<char>>, numbers: &'a Vec<PartNr>) -> Vec<&'a PartNr> {
+fn numbers_adjacent<'a>(
+    pos_x: i32,
+    pos_y: i32,
+    schematic: &Vec<Vec<char>>,
+    numbers: &'a Vec<PartNr>,
+) -> Vec<&'a PartNr> {
     let mut adj = vec![];
     let width = schematic[0].len() as i32;
     let height = schematic.len() as i32;
@@ -107,7 +112,7 @@ fn numbers_adjacent<'a>(pos_x: i32, pos_y: i32, schematic: &Vec<Vec<char>>, numb
 pub fn part2(input: &str) -> i32 {
     let mut summed_gear_ratios = 0;
     let lines: Vec<Vec<char>> = input.lines().map(|x| x.chars().collect()).collect();
-    let mut numbers = find_all_numbers(&lines);
+    let numbers = find_all_numbers(&lines);
 
     for (y, line) in lines.iter().enumerate() {
         for (x, c) in line.iter().enumerate() {
