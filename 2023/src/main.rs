@@ -2,6 +2,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 use std::fs;
 
@@ -39,6 +40,10 @@ fn main() {
         Solution {
             part1: &day04::part1,
             part2: &day04::part2,
+        },
+        Solution {
+            part1: &day05::part1,
+            part2: &day05::part2,
         },
     ];
 
